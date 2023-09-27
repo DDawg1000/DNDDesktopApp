@@ -1,0 +1,183 @@
+﻿<Window x:Class="DnD_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DnD_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="HealthBarGrid" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="HealthBarUpButton"/>
+                        <RowDefinition x:Name="HealthBarDownButton"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" x:Name="HealthBar"/>
+                        <ColumnDefinition Width="0" x:Name="MissingHealthBar"/>
+                        <ColumnDefinition Width="0.3*" x:Name="HealthButtonsColumn"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Background of the health bar (total hp) -->
+                    <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="Gray"/>
+                    <!-- Foreground of the current health (current hp) -->
+                    <Rectangle Grid.Column="0" Grid.RowSpan="2" Fill="Green"/>
+
+                    <!-- Text that shows current hp -->
+                    <TextBlock x:Name="HPText" Grid.RowSpan="2" Grid.ColumnSpan="2" Text="HP: " FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    <!-- Button to raise hp -->
+                    <Button x:Name="HealthUpButton" Click="HealthUpButtonPressed" Content="HP ▲" Grid.Column="2" Grid.Row="0"/>
+                    <!-- Button to lower hp -->
+                    <Button x:Name="HealthDownButton" Click="HealthDownButtonPressed" Content="HP ▼" Grid.Column="2" Grid.Row="1"/>
+                </Grid>
+                
+                <Grid x:Name="ShieldsBar" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="ShieldBarUpButton"/>
+                        <RowDefinition x:Name="ShieldBarDownButton"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" x:Name="ShieldTotalBar"/>
+                        <ColumnDefinition Width="0" x:Name="MissingShieldBar"/>
+                        <ColumnDefinition Width="0.3*" x:Name="ShieldButtonsColumn"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Background of the health bar (total hp) -->
+                    <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="Gray"/>
+                    <!-- Foreground of the current health (current hp) -->
+                    <Rectangle Grid.Column="0" Grid.RowSpan="2" Fill="Green"/>
+
+                    <!-- Text that shows current hp -->
+                    <TextBlock x:Name="ShieldText" Grid.RowSpan="2" Grid.ColumnSpan="2" Text="Shield HP: " FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    <!-- Button to raise hp -->
+                    <Button x:Name="ShieldHealthUpButton" Click="ShieldHealthUpButtonPressed" Content="Shield HP ▲" Grid.Column="2" Grid.Row="0"/>
+                    <!-- Button to lower hp -->
+                    <Button x:Name="ShieldHealthDownButton" Click="ShieldHealthDownButtonPressed" Content="Shield HP ▼" Grid.Column="2" Grid.Row="1"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="GunsPowerBar" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid x:Name="EnginesPowerBar" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid x:Name="HullPowerBar" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid x:Name="ShieldsPowerBar" Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid x:Name="FTLPowerBar" Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid x:Name="CommsPowerBar" Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="GunsUpButton" Click="GunsUpButtonPressed" Content="Guns ▲" Grid.Column="0" Grid.Row="0"/>
+                <Button x:Name="EngineUpButton" Click="EngineUpButtonPressed" Content="Engine ▲" Grid.Column="1" Grid.Row="0"/>
+                <Button x:Name="HullUpButton" Click="HullUpButtonPressed" Content="Hull ▲" Grid.Column="2" Grid.Row="0"/>
+                <Button x:Name="ShieldsUpButton" Click="ShieldsUpButtonPressed" Content="Shields ▲" Grid.Column="3" Grid.Row="0"/>
+                <Button x:Name="FTLUpButton" Click="FTLUpButtonPressed" Content="FTL ▲" Grid.Column="4" Grid.Row="0"/>
+                <Button x:Name="CommsUpButton" Click="CommsUpButtonPressed" Content="Comms ▲" Grid.Column="5" Grid.Row="0"/>
+
+                <Button x:Name="GunsDownButton" Click="GunsDownButtonPressed" Content="Guns ▼" Grid.Column="0" Grid.Row="1"/>
+                <Button x:Name="EngineDownButton" Click="EngineDownButtonPressed" Content="Engine ▼" Grid.Column="1" Grid.Row="1"/>
+                <Button x:Name="HullDownButton" Click="HullDownButtonPressed" Content="Hull ▼" Grid.Column="2" Grid.Row="1"/>
+                <Button x:Name="ShieldsDownButton" Click="ShieldsDownButtonPressed" Content="Shields ▼" Grid.Column="3" Grid.Row="1"/>
+                <Button x:Name="FTLDownButton" Click="FTLDownButtonPressed" Content="FTL ▼" Grid.Column="4" Grid.Row="1"/>
+                <Button x:Name="CommsDownButton" Click="CommsDownButtonPressed" Content="Comms ▼" Grid.Column="5" Grid.Row="1"/>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
